@@ -1,0 +1,108 @@
+/* Hero.module.css */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 100px;
+}
+
+
+.textContainer {
+    flex: 1;
+}
+
+.heading {
+    /* margin-top: -100px; */
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subHeading {
+    font-size: 2.5rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.description {
+    font-size: 1.2rem;
+
+    color: #999;
+    margin-bottom: 16px;
+}
+
+.imageContainer {
+  text-align: center;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.arrowLeft,
+.arrowRight {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+.arrowLeft {
+  color: black;
+}
+
+.arrowRight {
+  /* right: 10px; */
+  color: black;
+}
+
+
+.shopNowButton {
+  background-color: #0070f3;
+  color: white;
+  margin: 20px 0px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+
+}
+
+.shopNowButton span{
+margin-left: 10px;
+
+  }
+.shopNowButton:hover{
+    background-color: #418ee7;
+}
+.shopIphonebtn {
+    background-color: #fff;
+    border: none;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 20px; /* Reduced padding for better visual balance */
+    position: relative; /* Required for absolute positioning of the span */
+}
+
+.shopIphonebtn span {
+    position: absolute; /* Position the span relative to the button */
+    right: 10px; /* Adjust as needed */
+    bottom: 10px; /* Adjust as needed */
+    text-decoration: underline; /* Underline style for the span */
+}
+
+.shopIphone {
+    border-bottom: 2px solid black;
+    color: black;
+}

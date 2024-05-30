@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 100px;
+    margin: 0 auto;
+    /* max-width: 800px; */
+    margin: 30px;
+    gap: 100px;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+}
+.loading{
+    text-align: center;
+    margin-top: 20%;
+}
+.loading p{
+ padding: 20px;
+}
+.productImage {
+    max-width: 30%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.productTitle {
+    font-size: 3.5em;
+    margin-bottom: 16px;
+    color: #333;
+}
+.productCategory{
+    font-size: 2rem;
+}
+.productDescription,
+.productRating {
+    margin: 8px 0;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.productDescription {
+    color: #666;
+    line-height: 1.5;
+}
+
+.productPrice {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.3em;
+}
+
+.productRating {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.button_options{
+    padding-top: 20px;
+}
+.button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #0070f3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #005bb5;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.5);
+}
