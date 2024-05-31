@@ -1,0 +1,104 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin: 2rem 100px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 12px 20px;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust box shadow values as needed */
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding-left: 10px; */
+}
+.product_name {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.product_name p {
+  font-size: 15px;
+  width: 200px;
+}
+
+.emptyCart {
+  text-align: center;
+  margin: 150px 0;
+  font-size: 18px;
+  color: #666;
+}
+.emptyCart p {
+  font-size: 30px;
+}
+
+.homeButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 1px solid #ccc; */
+  padding-bottom: 5px;
+  /* padding-left: 80px; */
+  font-weight: bold;
+  margin: 20px;
+}
+
+.columnHeader {
+  flex: 1;
+  text-align: center;
+  padding-left: 20px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+/* styles.module.css */
+
+/* styles.module.css */
+
+.deleteItem button {
+  background-color: #ff6347; /* Tomato red */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deleteItem button:hover {
+  background-color: #ff473e; /* Darker shade of red */
+}
+
+.quantityButton {
+  /* Button styles for quantity controls */
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0px 10px;
+  font-size: 1.2rem;
+  color: #333;
+  border-radius: 6px;
+}
+
+.quantityButton:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}

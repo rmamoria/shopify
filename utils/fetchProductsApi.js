@@ -1,14 +1,15 @@
-
-export default function fetchProductsFromFakeStoreApi() {
-    return fetch('https://fakestoreapi.com/products')
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return res.json();
-        })
-        .catch(error => {
-            console.error('Error fetching products:', error);
-            throw error;
-        });
+export default async function fetchProductsFromFakeStoreApi() {
+    try {
+        const res = await fetch('https://fakestoreapi.com/products');
+        if (!res.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
 }
+
+

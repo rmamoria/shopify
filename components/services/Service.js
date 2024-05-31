@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Service.module.css"; // Adjust the path as needed
+import styles from "./Service.module.css"; 
 
 const Service = ({ imgPath, title, description }) => {
   return (

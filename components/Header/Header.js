@@ -8,11 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import style from "./Header.module.css";
 import { useRouter } from "next/router";
-
+import { useStateContext } from "@/contexts/StateContext";
 export default function MainHeader() {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
-
+  const { cartItems } = useStateContext();
   useEffect(() => {
     setActiveLink(router.pathname);
   }, [router.pathname]);
@@ -25,6 +25,9 @@ export default function MainHeader() {
     router.push("/");
   };
 
+  const goToCartItems = () => {
+    router.push("/cart-items");
+  };
   return (
     <header className={style.header}>
       <div className={style.logo}>
@@ -73,15 +76,15 @@ export default function MainHeader() {
         </button>
       </div>
       <div className={style.cart}>
-        <div className={style.cart_icon}>
+        <div className={style.cart_icon} onClick={goToCartItems}>
           <FontAwesomeIcon icon={faCartShopping} />
+          {cartItems.length > 0 && <span>{`(${cartItems.length})`}</span>}
         </div>
       </div>
+      
       <div>
         <Link href="/signup" passHref>
-
-            <FontAwesomeIcon icon={faUser} /> <span>SignUp</span>
-
+          <FontAwesomeIcon icon={faUser} /> <span>SignUp</span>
         </Link>
       </div>
     </header>

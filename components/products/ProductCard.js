@@ -7,11 +7,33 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import fetchProductsFromFakeStoreApi from "@/utils/fetchProductsApi";
 import Link from "next/link";
+import { useStateContext } from "@/contexts/StateContext";
 
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(8);
+  const { cartItems, setCartItems } = useStateContext();
+
+  const [addedToCart, setAddedToCart] = useState({});
+
+  const handleAddToCart = (product) => {
+    const updatedCartItems = [
+      ...cartItems,
+      {
+        product_id :product.id,
+        product_name:product.title,
+        product_img: product.image,
+        product_quantity: 1,
+        product_price: product.price
+      }
+    ];
+    setCartItems(updatedCartItems);
+    setAddedToCart((prevState) => ({
+      ...prevState,
+      [product.id]: true
+    }));
+  };
 
   useEffect(() => {
     fetchProductsFromFakeStoreApi()
@@ -34,11 +56,8 @@ export default function ProductCard() {
     setCurrentPage(page);
   };
 
-  // Calculate paginated products based on currentPage and pageSize
   const startIndex = (currentPage - 1) * pageSize;
   const paginatedProducts = products.slice(startIndex, startIndex + pageSize);
-
-  // Calculate total pages
   const totalPages = Math.ceil(products.length / pageSize);
 
   return (
@@ -69,8 +88,12 @@ export default function ProductCard() {
                   See details
                 </Link>
               </button>
-              <button className={`${styles.button} ${styles.addToCartButton}`}>
-                Add to cart
+              <button
+                className={`${styles.button} ${styles.addToCartButton}`}
+                onClick={() => handleAddToCart(product)}
+                disabled={addedToCart[product.id]}
+              >
+                {addedToCart[product.id] ? "Added to cart" : "Add to cart"}
               </button>
             </div>
           </div>
