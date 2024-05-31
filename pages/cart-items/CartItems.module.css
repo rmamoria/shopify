@@ -102,3 +102,54 @@
   background-color: #f0f0f0;
   color: #333;
 }
+
+
+/* CartItems.module.css */
+.summaryContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding: 10px 100px;
+}
+
+.summaryTable {
+  width: 50%;
+}
+
+.summaryTable table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+}
+
+.summaryTable td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.buttons{
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+.addButton, .goBackBtn  {
+  padding: 10px 20px;
+  background-color: #0070f3;
+   text-align: end;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.goBackBtn{
+  background-color: #28a745;
+}
+.addButton:hover {
+  background-color: #005bb5;
+}
+ .goBackBtn:hover{
+  background-color: #038421;
+ }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./CartItems.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Image from 'next/image';
+import Image from "next/image";
 import { Snackbar, Alert } from "@mui/material";
 import { useState } from "react";
 
@@ -36,6 +36,7 @@ export default function CartItem() {
   const handleIncreaseQuantity = (index) => {
     const newCartItems = [...cartItems];
     newCartItems[index].product_quantity++;
+    newCartItems[index].total_price = (newCartItems[index].product_quantity * newCartItems[index].product_price).toFixed(2);
     setCartItems(newCartItems);
   };
 
@@ -43,19 +44,32 @@ export default function CartItem() {
     const newCartItems = [...cartItems];
     if (newCartItems[index].product_quantity > 1) {
       newCartItems[index].product_quantity--;
+      newCartItems[index].total_price = (newCartItems[index].product_quantity * newCartItems[index].product_price).toFixed(2);
     } else {
-      handleRemoveProduct(newCartItems[index].product_id, newCartItems[index].product_name);
+      handleRemoveProduct(
+        newCartItems[index].product_id,
+        newCartItems[index].product_name
+      );
       return;
     }
     setCartItems(newCartItems);
   };
 
-  const handleCloseSnackbar = (index) => {
+  const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
-    // Optionally, remove the message from the snackbarMessages state after it's closed.
-    // This depends on whether you want to keep the messages after they are shown.
-    // setSnackbarMessages(snackbarMessages.filter((_, i) => i !== index));
   };
+
+  const calculateTotalPrice = () => {
+    return cartItems
+      .reduce(
+        (total, item) => total + item.product_price * item.product_quantity,
+        0
+      )
+      .toFixed(2);
+  };
+
+
+  console.log("Cart Items : ", cartItems);
 
   return (
     <section>
@@ -76,7 +90,7 @@ export default function CartItem() {
             </div>
 
             <div className={styles.detailItem}>
-              <p>Quantity : </p>
+              <p>Quantity :</p>
               <button
                 className={styles.quantityButton}
                 onClick={() => handleDecreaseQuantity(index)}
@@ -100,7 +114,11 @@ export default function CartItem() {
             </div>
 
             <div className={styles.deleteItem}>
-              <button onClick={() => handleRemoveProduct(item.product_id, item.product_name)}>
+              <button
+                onClick={() =>
+                  handleRemoveProduct(item.product_id, item.product_name)
+                }
+              >
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>
@@ -112,14 +130,54 @@ export default function CartItem() {
           key={index}
           open={snackbarOpen}
           autoHideDuration={3000}
-          onClose={() => handleCloseSnackbar(index)}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         >
-          <Alert onClose={() => handleCloseSnackbar(index)} severity="info" sx={{ width: '100%' }}>
+          <Alert
+            onClose={handleCloseSnackbar}
+            severity="info"
+            sx={{ width: "100%" }}
+          >
             {message.message}
           </Alert>
         </Snackbar>
       ))}
+
+      <div className={styles.summaryContainer}>
+        <div className={styles.summaryTable}>
+          <table>
+            <tbody>
+              <tr>
+                <td>Total Items:</td>
+                <td>{cartItems.reduce((total, item) => total + item.product_quantity, 0)}</td>
+              </tr>
+              <tr>
+                <td>Sub Total Price:</td>
+                <td>${calculateTotalPrice()}</td>
+              </tr>
+              <tr>
+                <td>Delivery Charge:</td>
+                <td>$80.00</td>
+              </tr>
+              <tr>
+                <td>Total Price : </td>
+                <td>${(+calculateTotalPrice() + 80).toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className={styles.buttons}>
+            <Link href="/" className={styles.goBackBtn}>
+              {" "}
+              Go To Home
+            </Link>
+
+            <Link href="/cart-items/add-address" className={styles.addButton}>
+              {" "}
+              Add Address
+            </Link>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

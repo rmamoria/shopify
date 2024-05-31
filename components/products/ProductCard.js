@@ -61,7 +61,8 @@ export default function ProductCard() {
           product_name: product.title,
           product_img: product.image,
           product_quantity: 1,
-          product_price: product.price
+          product_price: product.price,
+          total_price:product.price
         }
       ];
       setCartItems(updatedCartItems);
@@ -122,8 +123,8 @@ export default function ProductCard() {
                 disabled={addedToCart[product.id]}
                 className={styles.addToCartButton}
               >
-              Add to cart
-                {/* {addedToCart[product.id] ? 'Added to Cart' : 'Add to Cart'} */}
+              {/* Add to cart */}
+                {addedToCart[product.id] ? 'Into Cart' : 'Add to Cart'}
               </Button>
             </div>
           </div>
