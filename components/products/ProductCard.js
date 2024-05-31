@@ -107,6 +107,7 @@ export default function ProductCard() {
             <h2 className={styles.productTitle}>
               {truncateTitle(product.title, 45)}
             </h2>
+            <p> Rating: {product.rating.rate}</p>
             <p className={styles.productPrice}>Price: ${product.price}</p>
             <div className={styles.buttons}>
               <Button variant="contained" color="primary">

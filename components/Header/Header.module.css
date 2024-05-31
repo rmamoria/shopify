@@ -86,6 +86,7 @@
   position: relative;
   cursor: pointer;
   font-size: 30px;
+  color: #333;
 }
 
 .cart_badge {
