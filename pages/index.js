@@ -1,8 +1,10 @@
 import Head from "next/head";
 
 import Hero from "@/components/Hero/Hero";
-import Products from "@/components/products/Products"
-
+import Products from "@/components/products/Products";
+import NewArrival from "@/components/NewArrival/NewArrival";
+import Service from "@/components/services/Service";
+import style from "./Home.module.css"
 export default function Home() {
   return (
     <>
@@ -12,8 +14,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Hero/>
-      <Products/>
+      <Hero />
+      <Products />
+      <NewArrival />
+      <div className={style.service_container}>
+        <Service
+          imgPath="/images/Services-1.svg"
+          title="FREE AND FAST DELIVERY"
+          description="Free delivery for all orders over $140"
+        />
+        <Service
+          imgPath="/images/Services-2.svg"
+          title="24/7 CUSTOMER SERVICE"
+          description="Friendly 24/7 customer support"
+        />
+        <Service
+          imgPath="/images/Services-3.svg"
+          title="MONEY BACK GUARANTEE"
+          description="We reurn money within 30 days"
+        />
+      </div>
     </>
-  )
+  );
 }

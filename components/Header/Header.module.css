@@ -13,6 +13,7 @@
     font-size: 25px;
     letter-spacing: 0.1rem;
     color: #000000;
+    cursor: pointer;
   }
   .navbar_items {
     list-style-type: none;

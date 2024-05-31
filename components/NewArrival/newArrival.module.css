@@ -1,0 +1,137 @@
+.new_section {
+  margin-top: 70px;
+}
+.newArrival_container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+.box_1 {
+  position: relative;
+}
+
+.box_1_detail {
+  position: absolute;
+
+  top: 23rem;
+  left: 20px;
+  color: #ececec;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.box_1_detail h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.box_1_detail p {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  padding-right: 200px;
+}
+
+.button {
+  background-color: #0070f3;
+  color: #ececec;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: #418ee7;
+}
+
+.box_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.box_21 {
+  position: relative;
+}
+
+.box_21_detail {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ececec;
+}
+.box_21_detail p {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  padding-top: 10px;
+  padding-right: 200px;
+}
+
+.box_3 {
+  display: flex;
+  gap: 20px;
+}
+.box_31 {
+  position: relative;
+}
+.box_31_detail {
+  position: absolute;
+  top: 120px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ececec;
+}
+.box_31_detail p {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  padding: 10px 0px;
+}
+.speaker_box {
+  background-image: url("/images/speaker.svg");
+  background-size: cover;
+  color: #ececec;
+  height: 400px;
+  width: 1170px;
+
+  padding-left: 70px;
+  margin: 0 auto;
+  /* padding: 10px 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.love_music{
+    color: #00FF66;
+    font-size: 20px;
+    margin-top: 25px;
+}
+.speaker_box h1 {
+  font-size: 40px;
+  letter-spacing: 2px;
+  max-width: 400px;
+}
+
+.details{
+    display: flex;
+    gap: 20px;
+
+}
+
+.specification{
+    background-color: aliceblue;
+    color: #333;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+.specification p{
+  font-size: 15px;
+}
