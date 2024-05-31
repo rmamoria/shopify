@@ -9,10 +9,12 @@ import {
 import style from "./Header.module.css";
 import { useRouter } from "next/router";
 import { useStateContext } from "@/contexts/StateContext";
+
 export default function MainHeader() {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
   const { cartItems } = useStateContext();
+
   useEffect(() => {
     setActiveLink(router.pathname);
   }, [router.pathname]);
@@ -28,6 +30,7 @@ export default function MainHeader() {
   const goToCartItems = () => {
     router.push("/cart-items");
   };
+
   return (
     <header className={style.header}>
       <div className={style.logo}>
@@ -47,7 +50,7 @@ export default function MainHeader() {
           <li>
             <Link
               href="/about"
-              passH
+              passHref
               className={activeLink === "/about" ? style.active : null}
             >
               About
@@ -56,7 +59,7 @@ export default function MainHeader() {
           <li>
             <Link
               href="/contact"
-              passH
+              passHref
               className={activeLink === "/contact" ? style.active : null}
             >
               Contact
@@ -78,10 +81,11 @@ export default function MainHeader() {
       <div className={style.cart}>
         <div className={style.cart_icon} onClick={goToCartItems}>
           <FontAwesomeIcon icon={faCartShopping} />
-          {cartItems.length > 0 && <span>{`(${cartItems.length})`}</span>}
+          {cartItems.length > 0 && (
+            <span className={style.cart_badge}>{cartItems.length}</span>
+          )}
         </div>
       </div>
-      
       <div>
         <Link href="/signup" passHref>
           <FontAwesomeIcon icon={faUser} /> <span>SignUp</span>
