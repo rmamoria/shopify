@@ -67,13 +67,11 @@ export default function ProductCard() {
       ];
       setCartItems(updatedCartItems);
 
-      // Mark as added to cart for notification purposes
       setAddedToCart((prevState) => ({
         ...prevState,
         [product.id]: true
       }));
 
-      // Add notification to the top of the queue
       setNotifications([
         { id: Date.now(), message: `${product.title} has been added to the cart` },
         ...notifications
