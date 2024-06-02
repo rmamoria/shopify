@@ -1,0 +1,107 @@
+/* Footer.module.css */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 100px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .exclusive,
+  .support,
+  .account,
+  .quickLink,
+  .downloadApp {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .heading {
+    margin-bottom: 10px;
+  }
+  
+  .subscribeText, .offerText {
+    margin: 0 0 10px;
+  }
+  
+  .address {
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .listItem {
+    margin-bottom: 5px;
+  }
+  
+  .subscribe {
+    display: flex;
+  }
+  
+  .emailInput {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .subscribeButton {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .subscribeButton span {
+    font-size: 18px;
+  }
+  
+  .appLinks{
+    display: flex;
+  }
+  .appLinks img {
+    margin-right: 10px;
+  }
+  
+  .storeLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .socialLinks {
+    margin-top: 10px;
+  }
+  
+  .socialIcon {
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .socialIcon:hover {
+    color: #ccc;
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+  }
+  

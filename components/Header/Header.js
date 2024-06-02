@@ -65,6 +65,15 @@ export default function MainHeader() {
               Contact
             </Link>
           </li>
+          <li>
+            <Link
+              href="/sell-product"
+              passHref
+              className={activeLink === "/sell-product" ? style.active : null}
+            >
+          Sell Products
+            </Link>
+          </li>
         </ul>
       </nav>
       <div className={style.search}>

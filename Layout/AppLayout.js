@@ -1,7 +1,7 @@
-
 import Head from "next/head";
 import styles from "./AppLayout.module.css";
 import MainHeader from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 const AppLayout = ({ children }) => {
   return (
     <div className={styles.container}>
@@ -11,6 +11,7 @@ const AppLayout = ({ children }) => {
       </Head>
       <MainHeader />
       <main className={styles.main}>{children}</main>
+      <Footer />
     </div>
   );
 };
