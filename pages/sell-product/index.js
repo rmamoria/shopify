@@ -9,7 +9,7 @@ export default function SellProduct() {
         description: '',
         rating: { rate: '', count: '' },
         image: '',
-        imageData: ''
+        // imageData: ''
  
     });
 
@@ -41,21 +41,41 @@ export default function SellProduct() {
                 setNewProduct({ 
                     ...newProduct, 
                     image: file.name,
-                    imageData: reader.result 
+                    // imageData: reader.result 
                 });
                 setImagePreview(reader.result);
             };
             reader.readAsDataURL(file);
         } else {
-            setNewProduct({ ...newProduct, image: '', imageData: '' });
+            setNewProduct({ ...newProduct, image: ''});
             setImagePreview('');
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Product submitted:', newProduct);
+    
+        try {
+            const response = await fetch('/api/sellProducts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newProduct),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error submitting product');
+            }
+    
+            const data = await response.json();
+            console.log('Product submitted:', data);
+
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     };
+    
 
     return (
         <section className={styles.sellProductSection}>
