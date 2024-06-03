@@ -1,4 +1,5 @@
 import style from "./newArrival.module.css";
+import { Button } from "@mui/material";
 export default function Speaker() {
   return (
     <div className={style.speaker_box}>
@@ -23,7 +24,7 @@ export default function Speaker() {
        </div>
 
        </div>
-       <button className={style.button}>Shop Now</button>
+       <Button className={style.button} variant="contained">Shop now</Button>
     </div>
   );
 }

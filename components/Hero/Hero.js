@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Hero.module.css"; 
 import Image from "next/image";
+import Button from '@mui/material/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const Hero = () => {
   const images = [
@@ -40,14 +43,14 @@ const Hero = () => {
         <h1 className={styles.heading}>Purchase your <br /> favourite brand from Shopify</h1>
         <h2 className={styles.subHeading}>Exclusive offers on <br /> iPhone15</h2>
         <p className={styles.description}>Buy iPhone 15 with 15% discount</p>
-        <button className={styles.shopNowButton}>Shop Now</button>
+        <Button className={styles.shopNowButton} variant="contained">Shop Now</Button>
       </div>
       <div className={styles.imageContainer}>
         <div className={styles.slider}>
           <div>
-            <button className={styles.arrowLeft} onClick={prevImage}>
-              &lt;
-            </button>
+          <Button className={styles.arrowLeft} onClick={prevImage}>
+      <FontAwesomeIcon icon={faChevronLeft} />
+    </Button>
           </div>
           <div className={`${styles.imageWrapper} ${isTransitioning ? styles.transition : ''}`}>
             <Image
@@ -61,9 +64,9 @@ const Hero = () => {
             />
           </div>
           <div>
-            <button className={styles.arrowRight} onClick={nextImage}>
-              &gt;
-            </button>
+          <Button className={styles.arrowRight} onClick={nextImage}>
+      <FontAwesomeIcon icon={faChevronRight} />
+    </Button>
           </div>
         </div>
       </div>
