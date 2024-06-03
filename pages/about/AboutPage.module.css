@@ -1,0 +1,78 @@
+
+.aboutPage {
+
+    padding: 20px;
+    color: #333;
+  }
+  
+  .sections {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+    overflow: hidden;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .sectionImage img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .sectionContent {
+    padding: 20px;
+  }
+  
+  .sectionContent h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .sectionContent p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .subSections {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    /* background-color: aqua; */
+  }
+  
+  .subSection {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subSectionImage img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .subSectionContent {
+    padding: 10px;
+  }
+  
+  .subSectionContent h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  
+  .subSectionContent p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  

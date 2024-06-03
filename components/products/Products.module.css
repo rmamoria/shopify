@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 10px 70px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .productCard {

@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useStateContext } from "@/contexts/StateContext";
 
 export default function MainHeader() {
+  const {user, setLoggedIn, loggedIn} =useStateContext();
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
   const { cartItems } = useStateContext();
@@ -97,7 +98,7 @@ export default function MainHeader() {
       </div>
       <div>
         <Link href="/signup" passHref>
-          <FontAwesomeIcon icon={faUser} /> <span>SignUp</span>
+          <FontAwesomeIcon icon={faUser} /> <span>{loggedIn ? `${user}` : "SignUp" }</span>
         </Link>
       </div>
     </header>

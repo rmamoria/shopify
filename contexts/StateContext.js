@@ -8,9 +8,10 @@ export const StateProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [selectedFromCart, setSelectedFromCart] = useState([]);
   const [addedToCart, setAddedToCart] = useState({});
-
+   const [user, setUser] = useState("");
+   const [loggedIn, setLoggedIn] = useState(false);
   return (
-    <StateContext.Provider value={{ cartItems, setCartItems, addedToCart, setAddedToCart ,selectedFromCart,setSelectedFromCart}}>
+    <StateContext.Provider value={{loggedIn,setLoggedIn, user,setUser, cartItems, setCartItems, addedToCart, setAddedToCart ,selectedFromCart,setSelectedFromCart}}>
       {children}
     </StateContext.Provider>
   );
