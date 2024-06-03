@@ -5,6 +5,7 @@ import Products from "@/components/products/Products";
 import NewArrival from "@/components/NewArrival/NewArrival";
 import Service from "@/components/services/Service";
 import style from "./Home.module.css"
+import DatabseProducts from "@/components/database-products/DatabaseProducts";
 export default function Home() {
   return (
     <>
@@ -15,7 +16,9 @@ export default function Home() {
       </Head>
 
       <Hero />
+      <DatabseProducts/>
       <Products />
+
       <NewArrival />
       <div className={style.service_container}>
         <Service

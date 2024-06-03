@@ -23,9 +23,9 @@ export default function CartItem() {
     );
   }
 
-  const handleRemoveProduct = (productId, productName) => {
+  const handleRemoveProduct = (id, productName) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product_id !== productId
+      (item) => item.id !== id
     );
     setCartItems(updatedCartItems);
     const message = `${productName} has been removed from the cart`;
@@ -47,7 +47,7 @@ export default function CartItem() {
       newCartItems[index].total_price = (newCartItems[index].product_quantity * newCartItems[index].product_price).toFixed(2);
     } else {
       handleRemoveProduct(
-        newCartItems[index].product_id,
+        newCartItems[index].id,
         newCartItems[index].product_name
       );
       return;
@@ -116,7 +116,7 @@ export default function CartItem() {
             <div className={styles.deleteItem}>
               <button
                 onClick={() =>
-                  handleRemoveProduct(item.product_id, item.product_name)
+                  handleRemoveProduct(item.id, item.product_name)
                 }
               >
                 <FontAwesomeIcon icon={faTrash} />

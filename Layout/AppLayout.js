@@ -10,6 +10,7 @@ const AppLayout = ({ children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <MainHeader />
+      
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>

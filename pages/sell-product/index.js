@@ -70,7 +70,7 @@ export default function SellProduct() {
             reader.onloadend = () => {
                 setNewProduct({
                     ...newProduct,
-                    image: file.name
+                    image: file.name 
                 });
                 setImagePreview(reader.result);
             };
@@ -80,55 +80,36 @@ export default function SellProduct() {
             setImagePreview('');
         }
     };
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let formValid = true;
-        const newErrors = { ...errors };
-
-        Object.keys(newProduct).forEach((key) => {
-            if (key !== 'rating' && newProduct[key] === '') {
-                newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
-                formValid = false;
+        const formData = new FormData();
+        formData.append('title', newProduct.title);
+        formData.append('category', newProduct.category);
+        formData.append('price', newProduct.price);
+        formData.append('description', newProduct.description);
+        formData.append('rating[rate]', newProduct.rating.rate);
+        formData.append('rating[count]', newProduct.rating.count);
+        formData.append('image', e.target.image.files[0]); 
+    
+        try {
+            const response = await fetch('/api/sellProducts', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error submitting product');
             }
-        });
-
-        if (newProduct.rating.rate === '' || newProduct.rating.count === '') {
-            newErrors.rate = 'Rate is required';
-            newErrors.count = 'Count is required';
-            formValid = false;
-        }
-
-        if (newProduct.image === '') {
-            newErrors.image = 'Image is required';
-            formValid = false;
-        }
-
-        setErrors(newErrors);
-
-        if (formValid) {
-            try {
-                const response = await fetch('/api/sellProducts', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(newProduct),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error submitting product');
-                }
-
-                const data = await response.json();
-                console.log('Product submitted:', data);
-
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
+    
+            const data = await response.json();
+            console.log('Product submitted:', data);
+    
+        } catch (error) {
+            console.error('Error:', error.message);
         }
     };
-
+    
     return (
         <section className={styles.sellProductSection}>
             <h2>Sell Your Product</h2>
