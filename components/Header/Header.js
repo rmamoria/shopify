@@ -4,17 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
   faSearch,
-  faUser
+  faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
 import style from "./Header.module.css";
 import { useRouter } from "next/router";
 import { useStateContext } from "@/contexts/StateContext";
+import { useSession, signOut } from "next-auth/react";
+import { Menu, MenuItem, Button } from "@mui/material";
 
 export default function MainHeader() {
-  const {user, setLoggedIn, loggedIn} =useStateContext();
+  const { data: session } = useSession();
+  const { user, setLoggedIn, loggedIn } = useStateContext();
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
   const { cartItems } = useStateContext();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     setActiveLink(router.pathname);
@@ -30,6 +34,20 @@ export default function MainHeader() {
 
   const goToCartItems = () => {
     router.push("/cart-items");
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    signOut({ callbackUrl: "/login" });
+    handleClose();
+    console.log("after logout :", session)
   };
 
   return (
@@ -72,7 +90,7 @@ export default function MainHeader() {
               passHref
               className={activeLink === "/sell-product" ? style.active : null}
             >
-          Sell Products
+              Sell Products
             </Link>
           </li>
         </ul>
@@ -97,9 +115,52 @@ export default function MainHeader() {
         </div>
       </div>
       <div>
-        <Link href="/signup" passHref>
-          <FontAwesomeIcon icon={faUser} /> <span>{loggedIn ? `${user}` : "SignUp" }</span>
-        </Link>
+        {loggedIn ? (
+          <>
+            <div onClick={handleClick} className={style.login_details}>
+              <img
+                className={style.user_image}
+                src={session.user.image}
+                alt="user image"
+              />
+              <p>{session?.user.name.split(" ")[0]}</p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faChevronDown} />
+              </p>
+            </div>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              getContentAnchorEl={null}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              transformOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <MenuItem className={style.menuItem}>
+                {session.user.name}
+              </MenuItem>
+              <MenuItem className={style.menuItem}>
+                {session.user.email}
+              </MenuItem>
+              <MenuItem className={style.logoutButton}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              </MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <Link href="/login">
+            <Button variant="contained" color="primary" onClick={handleLogout}>
+              login
+            </Button>
+          </Link>
+        )}
       </div>
     </header>
   );

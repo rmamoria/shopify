@@ -1,12 +1,28 @@
 import Head from "next/head";
-
+import { useSession } from "next-auth/react"; // Import useSession hook from next-auth/react
 import Hero from "@/components/Hero/Hero";
 import Products from "@/components/products/Products";
 import NewArrival from "@/components/NewArrival/NewArrival";
 import Service from "@/components/services/Service";
-import style from "./Home.module.css"
+import style from "./Home.module.css";
 import DatabseProducts from "@/components/database-products/DatabaseProducts";
+
 export default function Home() {
+  const { data: session, status } = useSession(); 
+  // If session is not loaded yet, show loading state or null
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  // If no session exists, redirect to login page
+  if (!session) {
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+    return null; 
+  }
+
+
   return (
     <>
       <Head>
@@ -16,7 +32,7 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <DatabseProducts/>
+      <DatabseProducts />
       <Products />
 
       <NewArrival />
@@ -34,7 +50,7 @@ export default function Home() {
         <Service
           imgPath="/images/Services-3.svg"
           title="MONEY BACK GUARANTEE"
-          description="We reurn money within 30 days"
+          description="We return money within 30 days"
         />
       </div>
     </>

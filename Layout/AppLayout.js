@@ -3,12 +3,21 @@ import Head from 'next/head';
 import styles from './AppLayout.module.css';
 import MainHeader from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { useSession } from 'next-auth/react';
 
 const AppLayout = ({ children }) => {
   const router = useRouter();
+  const { data: session, status } = useSession();
+  const isLoginPage = router.pathname === '/login';
 
-  // Check if the current path is '/signup'
-  const isSignupPage = router.pathname === '/signup';
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (!session && !isLoginPage) {
+    router.push("/login");
+    return null;
+  }
 
   return (
     <div className={styles.container}>
@@ -17,11 +26,11 @@ const AppLayout = ({ children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       
-      {!isSignupPage && <MainHeader />}
+      {!isLoginPage && <MainHeader />}
       
       <main className={styles.main}>{children}</main>
   
-      {!isSignupPage && <Footer />}
+      {!isLoginPage && <Footer />}
     </div>
   );
 };

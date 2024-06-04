@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    margin-top: 50px;
+    background-color: #ffffff;
+  }
+  
+  .notLoggedIn {
+    text-align: center;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .signInContainer {
+    margin-bottom: 2rem;
+  }
+  
+  .signInIcon {
+    margin-right: 0.5rem;
+  }
+  
+  .signInInfo {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 5px;
+  }
+  .inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+  .inputField {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+
+  .hr_line{
+    height: 2px;
+    margin-bottom: 30px;
+  }
+  .providerButtons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .signInBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    /* background-color: #4285f4; */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .signInBtn:hover {
+    /* background-color: #3367d6; */
+  }
+  
+  .signInBtn svg {
+    margin-right: 0.5rem;
+  }
+  .icon {
+    /* Example styles */
+    font-size: 1.5rem; /* Adjust size as needed */
+    margin-right: 0.5rem; /* Adjust spacing as needed */
+  }
