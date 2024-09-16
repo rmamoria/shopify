@@ -34,7 +34,6 @@ export default function Home() {
       <Hero />
       <DatabseProducts />
       <Products />
-
       <NewArrival />
       <div className={style.service_container}>
         <Service
